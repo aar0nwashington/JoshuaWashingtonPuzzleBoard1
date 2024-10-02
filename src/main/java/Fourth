@@ -1,0 +1,68 @@
+
+public class Third {
+
+	private int [][] puzzleBoard;
+	private int emptyRow, emptyCol;
+
+	public Third() {
+	//makes the array
+		puzzleBoard = new int [][] {{2,3,5},{1,4,6},{7,8,0}};
+		
+		emptyRow =2;
+		emptyCol =2;
+	}
+	//prints out the array to the user to solve
+	public void displayPuzzle() {
+		for(int i = 0; i < puzzleBoard.length; i++) {
+			for(int j = 0; j < puzzleBoard[i].length; j++) {
+				System.out.print(puzzleBoard[i][j]+ " ");
+			}
+			System.out.println();
+		}
+				
+	}
+	//checks to determine if the puzzle has been solved
+	public boolean isSolved() {
+		int num = 1;
+		for(int i = 0; i< 3; i++) {
+			for(int j = 0; j< 3; j++) {
+				if(puzzleBoard[i][j] != num % 9) {
+					return false;
+				}
+				num++;
+			}
+		}
+		return true;
+	}
+	//moves the peice selected by the user and updates that to the puzzle
+	public void movePiece(int piece) {
+		int row = -1, co1 = -1;
+		outerloop:
+		for(int i = 0; i < 3; i++) {
+			for(int j = 0; j < 3; j++) {
+				if(puzzleBoard[i][j] == piece) {
+					row = i;
+					co1 = j;
+					break outerloop;
+					
+				}
+			}
+		}
+		//statement if the user chooses a number not in the puzzle
+		if(Math.abs(row - emptyRow) + Math.abs(co1 - emptyCol) != 1) {
+			System.out.println("Invalid move! please choose a neigboring piece");
+			return;
+		}
+		
+		puzzleBoard[emptyRow][emptyCol] = puzzleBoard[row][co1];
+		puzzleBoard[row][co1] = 0;
+		emptyRow = row;
+		emptyCol = co1;
+		
+		if (isSolved()) {
+			System.out.println("Congratulations puzzle solved");
+		}
+	}
+	
+	
+}

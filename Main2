@@ -1,0 +1,80 @@
+import java.util.Scanner;
+
+public class Main2 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+
+		//Invoke all the classes 
+		Third three = new Third();
+		Fourth four = new Fourth();
+		fifth five = new fifth();
+		
+	
+		Scanner scan = new Scanner(System.in);
+	//prompt the User 
+System.out.print("Which puzzle would you like to solve; type 3 for 3x3, 4 for 4x4, and 5 for 5x5");
+int puznum = scan.nextInt();
+
+//switch statement that executes the code for the puzzle selected by the user 
+switch (puznum)	{
+case 3:
+	do {
+		System.out.println("Puzzle Board: ");
+		three.displayPuzzle();
+		
+		System.out.print("Enter the piece you want to slide into the empty slot");
+		int piece = scan.nextInt();
+		three.movePiece(piece);
+		
+		if(three.isSolved()) {
+			System.out.println("Congratulations! Puzzle is solved");
+			break;
+		}
+		
+	}while (true);
+	
+	scan.close();
+	break;
+case 4:
+	do {
+	System.out.println("Puzzle Board: ");
+	four.displayPuzzle();
+	
+	System.out.print("Enter the piece you want to slide into the empty slot");
+	int piece = scan.nextInt();
+	four.movePiece(piece);
+
+	if(four.isSolved()) {
+		System.out.println("Congratulations ! you solved the Puzzle");
+		break;
+	}
+	}while (true);
+	
+	scan.close();
+	break;
+case 5:
+	do {
+		System.out.println("Puzzle Board: ");
+		five.displayPuzzle();
+		
+		System.out.print("Enter the piece you want to slide into the empty slot");
+		int piece = scan.nextInt();
+		five.movePiece(piece);
+		
+		if(five.isSolved()) {
+			System.out.println("Congratulations! Puzzle is solved");
+			break;
+		}
+		
+	}while (true);
+	
+	scan.close();
+	break;	
+}	
+		
+		
+	}
+
+}
